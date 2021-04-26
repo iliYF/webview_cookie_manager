@@ -1,5 +1,5 @@
-group 'com.tencent.soho.flutter.plugins.webview_cookie_manager.cookie_manager'
-version '1.0'
+group 'com.tencent.soho.flutter.plugins.webview_cookie_manager'
+version '0.0.1'
 
 buildscript {
     repositories {

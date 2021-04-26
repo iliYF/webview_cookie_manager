@@ -24,6 +24,7 @@ import java.util.Map;
  */
 public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHandler {
 
+    private static final String PLUGIN_KEY_NAME = "plugins.flutter.soho/webview_cookie_manager";
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -31,13 +32,13 @@ public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHand
     private MethodChannel channel;
 
     public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "cookie_manager");
+        final MethodChannel channel = new MethodChannel(registrar.messenger(), PLUGIN_KEY_NAME);
         channel.setMethodCallHandler(new WebviewCookieManagerPlugin());
     }
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "cookie_manager");
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), PLUGIN_KEY_NAME);
         channel.setMethodCallHandler(this);
     }
 

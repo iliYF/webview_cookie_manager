@@ -4,12 +4,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 class WebviewCookieManager {
-  static const MethodChannel _channel = const MethodChannel('webview_cookie_manager');
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
+  static const MethodChannel _channel = const MethodChannel('plugins.flutter.soho/webview_cookie_manager');
 
   factory WebviewCookieManager() {
     return _instance ??= WebviewCookieManager._();
@@ -18,6 +13,11 @@ class WebviewCookieManager {
   WebviewCookieManager._();
 
   static WebviewCookieManager _instance;
+
+  static Future<String> get platformVersion async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
+    return version;
+  }
 
   Future<void> clearCookies() {
     return _channel.invokeMethod<void>('clearCookies');
